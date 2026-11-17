@@ -52,6 +52,22 @@ public class Setup : Gtk.Box {
         actions.add_action (start_timer_action);
         insert_action_group ("timer-setup", actions);
 
+        var key_controller = new Gtk.EventControllerKey ();
+        key_controller.propagation_phase = Gtk.PropagationPhase.CAPTURE;
+        key_controller.key_pressed.connect ((keyval, keycode, state) => {
+            if (keyval != Gdk.Key.Return && keyval != Gdk.Key.KP_Enter) {
+                return false;
+            }
+
+            if (get_duration () == 0) {
+                return false;
+            }
+
+            start_timer ();
+            return true;
+        });
+        add_controller (key_controller);
+
         time_grid.set_direction (Gtk.TextDirection.LTR);
     }
 
