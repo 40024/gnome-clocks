@@ -1,13 +1,25 @@
-# GNOME Clocks
+# What / Why
+A fork of gnome-clocks patched to my liking
 
-A simple clock application for GNOME. It includes world clocks, alarms,
-a stopwatch and a timer.
+---
 
-<a href='https://flathub.org/apps/details/org.gnome.clocks'><img width='190px' alt='Download on Flathub' src='https://flathub.org/api/badge?svg&locale=en'/></a>
+# Setup
+## Deps
+sudo pacman -S --needed base-devel meson ninja vala vorbis-tools itstool
 
-## Useful links
+## Launch Dev
+meson setup build --prefix=/usr/local -Dprofile=development
+meson compile -C build
+meson devenv -C build ./src/gnome-clocks
 
-- Homepage: <https://apps.gnome.org/Clocks>
-- Report issues: <https://gitlab.gnome.org/GNOME/gnome-clocks/issues/>
-- Donate: <https://www.gnome.org/donate/>
-- Translate: <https://l10n.gnome.org/module/gnome-clocks/>
+## Replace gnome-clocks
+meson configure build -Dprofile=default
+meson compile -C build
+sudo pacman -R gnome-clocks
+sudo meson install -C build
+
+---
+
+## Compliance with license
+Files modified can be seen in the git commit history
+Link to where source: https://github.com/GNOME/gnome-calendar
