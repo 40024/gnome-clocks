@@ -7,8 +7,11 @@ A fork of gnome-clocks patched to my liking
 ## Deps
 sudo pacman -S --needed base-devel meson ninja vala vorbis-tools itstool
 
-## Launch Dev
+## Setup Build (One-time)
 meson setup build --prefix=/usr/local -Dprofile=development
+
+## Build
+pkill -x gnome-clocks
 meson compile -C build
 meson devenv -C build ./src/gnome-clocks
 
