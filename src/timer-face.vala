@@ -28,8 +28,6 @@ public class Face : Adw.Bin, Clocks.Clock {
     [GtkChild]
     private unowned Gtk.Button start_button;
     [GtkChild]
-    private unowned Adw.ViewStack stack;
-    [GtkChild]
     private unowned Adw.Bin timer_bin;
 
     public PanelId panel_id { get { return TIMER; } }
@@ -62,11 +60,11 @@ public class Face : Adw.Bin, Clocks.Clock {
         });
 
         timers.items_changed.connect ( (added, removed, position) => {
-            if (this.timers.get_n_items () > 0) {
-                stack.visible_child_name = "timers";
+            var has_timers = this.timers.get_n_items () > 0;
+            timers_list.visible = has_timers;
+            if (has_timers) {
                 this.button_mode = NEW;
             } else {
-                stack.visible_child_name = "empty";
                 this.button_mode = NONE;
             }
             save ();
@@ -79,7 +77,7 @@ public class Face : Adw.Bin, Clocks.Clock {
         notification.set_priority (HIGH);
 
         timer_bin.child = timer_setup;
-        stack.set_visible_child_name ("empty");
+        timers_list.visible = false;
 
         start_button.set_sensitive (false);
         timer_setup.duration_changed.connect ((duration) => {
