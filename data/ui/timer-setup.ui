@@ -108,31 +108,31 @@
                   </object>
                 </child>
                 <child>
-                  <object class="GtkButton" id="quick_30m">
+                  <object class="GtkButton" id="quick_15m">
                     <property name="action-name">timer-setup.start-timer</property>
-                    <property name="action-target">30</property>
+                    <property name="action-target">15</property>
                     <accessibility>
                       <property name="label" translatable="yes" comments="Translators: An accessible timer quick start value">Thirty minutes</property>
                     </accessibility>
                     <child>
                       <object class="GtkLabel">
                         <property name="accessible-role">presentation</property>
-                        <property name="label" translatable="yes" comments="Translators: A timer quick start value">30 m</property>
+                        <property name="label" translatable="yes" comments="Translators: A timer quick start value">15 m</property>
                       </object>
                     </child>
                   </object>
                 </child>
                 <child>
-                  <object class="GtkButton" id="quick_15m">
+                  <object class="GtkButton" id="quick_30m">
                     <property name="action-name">timer-setup.start-timer</property>
-                    <property name="action-target">15</property>
+                    <property name="action-target">30</property>
                     <accessibility>
                       <property name="label" translatable="yes" comments="Translators: An accessible timer quick start value">Fifteen minutes</property>
                     </accessibility>
                     <child>
                       <object class="GtkLabel">
                         <property name="accessible-role">presentation</property>
-                        <property name="label" translatable="yes" comments="Translators: A timer quick start value">15 m</property>
+                        <property name="label" translatable="yes" comments="Translators: A timer quick start value">30 m</property>
                       </object>
                     </child>
                   </object>
